@@ -17,7 +17,7 @@ class Dwz_Controller_Action extends Zend_Controller_Action {
 		$this->view->URL = $name;
 		$this->view->MODULE = $name;
 	}
-	
+	/*
 	protected function _dbMap($dbCols = array()) {
 		$dbMap = array ();
 		if (is_array ( $dbCols )) {
@@ -29,10 +29,12 @@ class Dwz_Controller_Action extends Zend_Controller_Action {
 		}
 		return $dbMap;
 	}
+	*/
 	
 	/**
 	 * 数据列表展示页面
 	 */
+	/*
 	function indexAction() {
 		$model = $this->M ();
 		$dbMap = $this->_dbMap ( $model->info ( 'cols' ) );
@@ -80,32 +82,40 @@ class Dwz_Controller_Action extends Zend_Controller_Action {
 		$this->view->currentPage = $pageNum > 0 ? $pageNum : 1;
 	
 	}
+	*/
 	
 	/**
 	 * 数据展示页面
 	 */
+	/*
 	function readAction() {
 		$this->editAction ();
 	}
+	*/
 	
 	/**
 	 * 数据创建页面
 	 */
+	/*
 	function addAction() {
 	
 	}
+	*/
 	
 	/**
 	 * 数据编辑页面
 	 */
+	/*
 	function editAction() {
 		$model = $this->M ();
 		$this->view->vo = $model->fetchRow ( 'id=' . $_REQUEST ['id'] );
 	}
+	*/
 	
 	/**
 	 * 创建数据操作
 	 */
+	/*
 	function insertAction() {
 		try {
 			$model = $this->M ();
@@ -116,10 +126,12 @@ class Dwz_Controller_Action extends Zend_Controller_Action {
 			$this->error ( '操作失败' );
 		}
 	}
+	*/
 	
 	/**
 	 * 更新数据操作
 	 */
+	/*
 	function updateAction() {
 		try {
 			$model = $this->M ();
@@ -134,10 +146,12 @@ class Dwz_Controller_Action extends Zend_Controller_Action {
 			$this->error ( '操作失败' );
 		}
 	}
+	*/
 	
 	/**
 	 * 删除数据操作，设置删除标志
 	 */
+	/*
 	function deleteAction() {
 		try {
 			$model = $this->M ();
@@ -151,10 +165,12 @@ class Dwz_Controller_Action extends Zend_Controller_Action {
 			$this->error ( '操作失败' );
 		}
 	}
+	*/
 	
 	/**
 	 * 强制删除数据操作
 	 */
+	/*
 	function foreverdeleteAction() {
 		try {
 			$model = $this->M ();
@@ -171,6 +187,7 @@ class Dwz_Controller_Action extends Zend_Controller_Action {
 		$className = ucfirst ( $this->_request->getControllerName () ) . 'Model';
 		return new $className ();
 	}
+	*/
 	
 	/**
      +----------------------------------------------------------

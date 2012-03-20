@@ -19,6 +19,20 @@ set_include_path(implode(PATH_SEPARATOR, array(
 include 'Zend/Loader.php';
 @Zend_Loader::registerAutoload();
 
+/** zend 注册器 */
+$registry = Zend_Registry::getInstance();
+
+/** load configuration */
+$config = new Zend_Config_Ini(APPLICATION_PATH . '/configs/application.ini', APPLICATION_ENV);
+$registry->set('config', $config);
+
+/** setup database */
+$db = Zend_Db::factory($config->resources->db);
+$registry->set('db', $db);
+
+//$log = Zend_Log::factory();
+//$registry->set('log', $log);
+
 /** Zend_Application */
 require_once 'Zend/Application.php';
 

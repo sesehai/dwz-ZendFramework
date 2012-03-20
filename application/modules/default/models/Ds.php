@@ -10,8 +10,8 @@ class Ds {
 		$this->_db = Zend_Registry::get('db');
 		$this->_tableName = $tableName;
 		$this->_primaryKeyName = $primaryKeyName;
-//$dbchar = 'utf8';
-//$this->_db->query('set character_set_connection='.$dbchar.',character_set_results='.$dbchar.',character_set_client=binary;');
+		//$dbchar = 'utf8';
+		//$this->_db->query('set character_set_connection='.$dbchar.',character_set_results='.$dbchar.',character_set_client=binary;');
 	}
 	
 	
@@ -99,7 +99,7 @@ class Ds {
 	}
 	
 	public function delete($id) {
-		$where = $this->_db->quoteInto(" ".$this->_primaryKeyName." = ?", $id);        
+		$where = $this->_db->quoteInto(" ".$this->_primaryKeyName." = ?", $id);
 		$this->_db->delete($this->_tableName,$where);
 	}	
 
