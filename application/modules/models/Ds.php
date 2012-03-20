@@ -13,8 +13,8 @@ class Ds {
 		//$dbchar = 'utf8';
 		//$this->_db->query('set character_set_connection='.$dbchar.',character_set_results='.$dbchar.',character_set_client=binary;');
 	}
-	
-	
+
+
 
 	public function getList($whereSql = '1=1', $limit = 0, $page = 0, $fieldStr = "*", $orderSql = "") {
 		$select = $this->_db->select();
@@ -34,7 +34,7 @@ class Ds {
 
 		$sql = $select->__toString();
 
-		$log = Zend_Registry::get('log');
+		//$log = Zend_Registry::get('log');
 		//$log->debug("################### sql:" . $sql);
 		return $this->_db->fetchAll($sql);
 	}
@@ -45,7 +45,7 @@ class Ds {
 		$select->where(($this->_primaryKeyName) . "=?", $id);
 
 		$sql = $select->__toString();
-		$log = Zend_Registry::get('log');
+		//$log = Zend_Registry::get('log');
 		//$log->debug("################### sql:" . $sql);
 		return $this->_db->fetchRow($sql);
 	}
@@ -81,27 +81,27 @@ class Ds {
 	public function getDb() {
 		return $this->_db;
 	}
-	
+
 	public function getTableName() {
 		return $this->_tableName;
-	}	
-	
-	
+	}
+
+
 	public function insert($row) {
 		$this->_db->insert($this->_tableName,$row);
 		return $this->_db->lastInsertId();
-	}	
+	}
 
 	public function update($row) {
 		$where = $this->_db->quoteInto(" ".$this->_primaryKeyName." = ?", $row[$this->_primaryKeyName]);
 
 		return $this->_db->update($this->_tableName,$row,$where);
 	}
-	
+
 	public function delete($id) {
 		$where = $this->_db->quoteInto(" ".$this->_primaryKeyName." = ?", $id);
 		$this->_db->delete($this->_tableName,$where);
-	}	
+	}
 
 }
 

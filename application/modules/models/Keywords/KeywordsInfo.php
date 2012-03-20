@@ -6,7 +6,7 @@ class Keywords_KeywordsInfo {
 	private $code;//编号
 	private $name;//名称
 	private $type;//标签类型1:标签分类2:取值标签3:匹配标签
-	
+
 	private $status;//状态:1-活动 2-暂停使用
 	private $parent_id;//上级关联标签
 	private $description;//描述
@@ -15,131 +15,131 @@ class Keywords_KeywordsInfo {
 	private $created_user;//
 	private $modified_date;//
 	private $modified_user;//
-	
 
 
-	function __construct($userArray = null) {
+
+	public function __construct($userArray = null) {
 		if ($userArray != null) {
 
 		}
 	}
 
-	function getId()
+	public function getId()
 	{
 		return $this->id;
 	}
 
-	function setId($id)
+	public function setId($id)
 	{
 		$this->id=$id;
 	}
 
-	function getCode()
+	public function getCode()
 	{
 		return $this->code;
 	}
 
-	function setCode($code)
+	public function setCode($code)
 	{
 		$this->code=$code;
 	}
 
-	function getName()
+	public function getName()
 	{
 		return $this->name;
 	}
 
-	function setName($name)
+	public function setName($name)
 	{
 		$this->name=$name;
 	}
 
-	function getType()
+	public function getType()
 	{
 		return $this->type;
 	}
 
-	function setType($type)
+	public function setType($type)
 	{
 		$this->type=$type;
 	}
-	
-	function getStatus()
+
+	public function getStatus()
 	{
 		return $this->status;
 	}
 
-	function setStatus($status)
+	public function setStatus($status)
 	{
 		$this->status=$status;
 	}
-	
-	function getParentId()
+
+	public function getParentId()
 	{
 		return $this->parent_id;
 	}
 
-	function setParentId($parent_id)
+	public function setParentId($parent_id)
 	{
 		$this->parent_id=$parent_id;
 	}
-	
-	function getDescription()
+
+	public function getDescription()
 	{
 		return $this->description;
 	}
 
-	function setDescription($description)
+	public function setDescription($description)
 	{
 		$this->description=$description;
 	}
-	
-	function getIsdelete()
+
+	public function getIsdelete()
 	{
 		return $this->is_delete;
 	}
 
-	function setIsDelete($is_delete)
+	public function setIsDelete($is_delete)
 	{
 		$this->is_delete=$is_delete;
 	}
 
-	function getIsDelete()
+	public function getIsDelete()
 	{
 		return $this->created_date;
 	}
 
-	function setCreatedDate($created_date)
+	public function setCreatedDate($created_date)
 	{
 		$this->created_date=$created_date;
 	}
-	
-	function getCreatedUser()
+
+	public function getCreatedUser()
 	{
 		return $this->created_user;
 	}
 
-	function setCreatedUser($created_user)
+	public function setCreatedUser($created_user)
 	{
 		$this->created_user=$created_user;
 	}
-	
-	function getModifiedDate()
+
+	public function getModifiedDate()
 	{
 		return $this->modified_date;
 	}
 
-	function setModifiedDate($modified_date)
+	public function setModifiedDate($modified_date)
 	{
 		$this->modified_date=$modified_date;
 	}
 
-	function getModifiedUser()
+	public function getModifiedUser()
 	{
 		return $this->modified_user;
 	}
 
-	function setModifiedUser($modified_user)
+	public function setModifiedUser($modified_user)
 	{
 		$this->modified_user=$modified_user;
 	}

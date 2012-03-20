@@ -3,7 +3,7 @@ class Default_KeywordsController extends Dwz_Controller_Action {
 	public function init() {
 		parent::init ();
 	}
-	
+
 	/**
 	 * 数据列表展示页面
 	 */
@@ -16,22 +16,22 @@ class Default_KeywordsController extends Dwz_Controller_Action {
 				$order .= ' ' . $_REQUEST ['orderDirection'];
 			}
 		}
-		
-		$numPerPage = 20;
+
+		$numPerPage = 2;
 		$offset = 0;
 		$pageNum = $_REQUEST ['pageNum'];
 		if (! empty ( $pageNum ) && $pageNum > 0) {
 			$offset = ($pageNum - 1) * $numPerPage;
 		}
-		
-		$keywordsDao = new Keywords_KeywordsDao();
-		$totalCount = $keywordsDao->getListAllCount()
-		
-		$this->view->list = $keywordsDao->getArrayList($numPerPage = 0, $offset = 0);//$model->fetchAll ( $where, $order, $numPerPage, $offset );
+
+		$keywordsDao = Keywords_KeywordsDao::getInstance();
+		$totalCount = $keywordsDao->getListAllCount();
+
+		$this->view->list = $keywordsDao->getArrayList($numPerPage, $offset);
 		$this->view->totalCount = $totalCount;
 		$this->view->numPerPage = $numPerPage;
 		$this->view->currentPage = $pageNum > 0 ? $pageNum : 1;
-	
+
 	}
 }
 ?>

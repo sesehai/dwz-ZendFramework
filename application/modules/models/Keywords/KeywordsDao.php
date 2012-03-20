@@ -29,7 +29,7 @@ class Keywords_KeywordsDao {
 	public function get($id) {
 		$ds = new Ds($this->_name, $this->_primary);
 		$row = $ds->getRow($id);
-		$userInfo = new User_UserInfo($row);
+		$userInfo = new Keywords_KeywordsInfo($row);
 		return $userInfo;
 	}
 
@@ -81,7 +81,7 @@ class Keywords_KeywordsDao {
 	}
 
 	public function getArrayList($perpage = 0, $page = 0) {
-		$log = Zend_Registry::get('log');
+		//$log = Zend_Registry::get('log');
 
 		$ds = new Ds($this->_name, $this->_primary);
 		$list = $ds->getList(' 1=1 ', $perpage, $page);
