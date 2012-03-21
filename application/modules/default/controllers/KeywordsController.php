@@ -27,7 +27,7 @@ class Default_KeywordsController extends Dwz_Controller_Action {
 		$keywordsDao = Keywords_KeywordsDao::getInstance();
 		$totalCount = $keywordsDao->getListAllCount();
 
-		$this->view->list = $keywordsDao->getArrayList($numPerPage, $offset);
+		$this->view->list = $keywordsDao->getList($numPerPage, $offset);
 		$this->view->totalCount = $totalCount;
 		$this->view->numPerPage = $numPerPage;
 		$this->view->currentPage = $pageNum > 0 ? $pageNum : 1;

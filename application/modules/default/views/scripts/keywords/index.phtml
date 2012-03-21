@@ -43,10 +43,10 @@
 		</thead>
 		<tbody>
 		<?php foreach($this->list as $vo){?>
-			<tr target="sid_obj" rel="<?php echo $vo->id;?>">
-				<td><?php echo $vo->code;?></td>
-				<td><?php echo $vo->name;?></td>
-				<td><?php echo $vo->description;?></td>
+			<tr target="sid_obj" rel="<?php echo $vo->getId();?>">
+				<td><?php echo $vo->getCode();?></td>
+				<td><?php echo $vo->getName();?></td>
+				<td><?php echo $vo->getDescription();?></td>
 			</tr>
 		<?php }?>
 		</tbody>

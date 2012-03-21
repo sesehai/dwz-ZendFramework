@@ -18,9 +18,21 @@ class Keywords_KeywordsInfo {
 
 
 
-	public function __construct($userArray = null) {
-		if ($userArray != null) {
+	public function __construct($keywordsArray = null) {
+		if ($keywordsArray != null) {
+			$this->id=$keywordsArray['id'];//主键ID
+			$this->cod=$keywordsArray['cod'];;//编号
+			$this->name=$keywordsArray['name'];//名称
+			$this->type=$keywordsArray['type'];//标签类型1:标签分类2:取值标签3:匹配标签
 
+			$this->status=$keywordsArray['status'];//状态:1-活动 2-暂停使用
+			$this->parent_id=$keywordsArray['parent_id'];//上级关联标签
+			$this->description=$keywordsArray['description'];//描述
+			$this->is_delete=$keywordsArray['is_delete'];//0:未删除 1:已删除
+			$this->created_date=$keywordsArray['created_date'];//
+			$this->created_user=$keywordsArray['created_user'];//
+			$this->modified_date=$keywordsArray['modified_date'];//
+			$this->modified_user=$keywordsArray['modified_user'];//
 		}
 	}
 
@@ -92,11 +104,6 @@ class Keywords_KeywordsInfo {
 	public function setDescription($description)
 	{
 		$this->description=$description;
-	}
-
-	public function getIsdelete()
-	{
-		return $this->is_delete;
 	}
 
 	public function setIsDelete($is_delete)
