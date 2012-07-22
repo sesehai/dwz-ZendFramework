@@ -1,17 +1,17 @@
 <form action="<?php echo $this->URL;?>/update?navTabId=<?php echo $this->MODULE;?>" method="post" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone)">
-<input type="hidden" name="id" value="<?php echo $this->vo->id;?>"/>
+<input type="hidden" name="id" value="<?php echo $this->vo->getId();?>"/>
 <div class="pageContent">
 	<div class="pageFormContent" layoutH="58">
 		<dl>
-			<dt>编号：</dt><dd><input name="code" class="required digits" alt="请输入整数" type="text" value="<?php echo $this->vo->code;?>"/></dd>
+			<dt>编号：</dt><dd><input name="code" class="required digits" alt="请输入整数" type="text" value="<?php echo $this->vo->getcode();?>"/></dd>
 		</dl>
 		<dl>
-			<dt>名称：</dt><dd><input name="name" class="required" type="text" value="<?php echo $this->vo->name;?>"/></dd>
+			<dt>名称：</dt><dd><input name="name" class="required" type="text" value="<?php echo $this->vo->getName();?>"/></dd>
 		</dl>
 		<dl class="nowrap">
 			<dt>描述：</dt>
 			<dd>
-				<textarea class="editor" name="description" rows="4" cols="75"><?php echo $this->escape($this->vo->description);?></textarea>
+				<textarea class="editor" name="description" rows="4" cols="75"><?php echo $this->escape($this->vo->getDescription());?></textarea>
 			</dd>
 		</dl>
 	</div>
