@@ -62,7 +62,20 @@ class Default_KeywordsController extends Dwz_Controller_Action {
     function insertAction() {
         try {
             $keywordsDao = Keywords_KeywordsDao::getInstance();
-            $dbMap = $this->_dbMap ( $model->info ( 'cols' ) );
+            $property['code']          = $this->_getParam('code');
+            $property['name']          = $this->_getParam('name');
+            $property['type']          = $this->_getParam('type');
+            $property['status']        = '1';//状态:1-活动 2-暂停使用
+            $property['parent_id']     = '';//上级关联标签
+            $property['description']   = $this->_getParam('description');//描述
+            $property['is_delete']     = '0';//0:未删除 1:已删除
+            $property['created_date']  = time();
+            $property['created_user']  = '';//
+            $property['modified_date'] = time();
+            $property['modified_user'] = '';//
+            
+            $oKeywordsInfo = new Keywords_KeywordsInfo($property);
+            
             $id = $keywordsDao->add($oKeywordsInfo);
             $this->success ( '操作成功' );
         } catch ( Exception $e ) {
@@ -76,8 +89,22 @@ class Default_KeywordsController extends Dwz_Controller_Action {
     function updateAction() {
         try {
             $keywordsDao = Keywords_KeywordsDao::getInstance();
-
-            $keywordsDao->modify($keywordsInfo);
+            
+            $id            = $this->_getId('id');
+            $code          = $this->_getParam('code');
+            $name          = $this->_getParam('name');
+            $type          = $this->_getParam('type');
+            $description   = $this->_getParam('description');//描述
+            $modified_date = time();
+            
+            $oKeywordsInfo = $keywordsDao->get($id);
+            $oKeywordsInfo->setCode($code);
+            $oKeywordsInfo->setName($name);
+            $oKeywordsInfo->setType($type);
+            $oKeywordsInfo->setDescription($description);
+            $oKeywordsInfo->setModifiedDate($modified_date);
+            
+            $keywordsDao->modify($oKeywordsInfo);
 
             $this->success ( '操作成功' );
         } catch ( Exception $e ) {

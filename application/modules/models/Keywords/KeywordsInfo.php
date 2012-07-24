@@ -15,6 +15,7 @@ class Keywords_KeywordsInfo {
     private $created_user;//
     private $modified_date;//
     private $modified_user;//
+    private $propertys;
 
 
 
@@ -34,6 +35,26 @@ class Keywords_KeywordsInfo {
             $this->modified_date=$keywordsArray['modified_date'];//
             $this->modified_user=$keywordsArray['modified_user'];//
         }
+    }
+
+    private function propertyToArray(){
+        $this->propertys['id']            = $this->id;
+        $this->propertys['code']          = $this->code;
+        $this->propertys['name']          = $this->name;
+        $this->propertys['type']          = $this->type;
+        $this->propertys['status']        = $this->status;//状态:1-活动 2-暂停使用
+        $this->propertys['parent_id']     = $this->parent_id;//上级关联标签
+        $this->propertys['description']   = $this->description;//描述
+        $this->propertys['is_delete']     = $this->is_delete;//0:未删除 1:已删除
+        $this->propertys['created_date']  = $this->created_date;//
+        $this->propertys['created_user']  = $this->created_user;//
+        $this->propertys['modified_date'] = $this->modified_date;//
+        $this->propertys['modified_user'] = $this->modified_user;//
+
+    }
+
+    public function getPropertys(){
+        return $this->propertyToArray();
     }
 
     public function getId()
