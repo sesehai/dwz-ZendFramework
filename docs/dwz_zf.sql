@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : 127.0.0.1
-Source Server Version : 50515
-Source Host           : 127.0.0.1:3306
+Source Server         : localhost
+Source Server Version : 50521
+Source Host           : localhost:3306
 Source Database       : dwz_zf
 
 Target Server Type    : MYSQL
-Target Server Version : 50515
+Target Server Version : 50521
 File Encoding         : 65001
 
-Date: 2012-07-24 13:38:10
+Date: 2012-07-24 23:53:00
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -79,18 +79,20 @@ CREATE TABLE `dwz_keywords` (
   `modified_date` datetime DEFAULT NULL,
   `modified_user` varchar(15) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COMMENT='标签表';
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COMMENT='标签表';
 
 -- ----------------------------
 -- Records of dwz_keywords
 -- ----------------------------
-INSERT INTO `dwz_keywords` VALUES ('2', '1', '张慧华1', null, '1', null, 'asdf', '0', null, null, null, null);
-INSERT INTO `dwz_keywords` VALUES ('3', '2', 'test', null, '1', null, '2', '0', null, null, null, null);
-INSERT INTO `dwz_keywords` VALUES ('4', '3', '张慧华3', null, '1', null, '3', '0', null, null, null, null);
-INSERT INTO `dwz_keywords` VALUES ('5', '4', '4', null, '1', null, '4', '0', null, null, null, null);
-INSERT INTO `dwz_keywords` VALUES ('6', '5', '5', null, '1', null, '5', '0', null, null, null, null);
-INSERT INTO `dwz_keywords` VALUES ('7', '6', '6', null, '1', null, '6', '0', null, null, null, null);
-INSERT INTO `dwz_keywords` VALUES ('8', '7', '7', null, '1', null, '7', '0', null, null, null, null);
+INSERT INTO `dwz_keywords` VALUES ('2', '001', '纪录片', null, '1', null, '纪录片', null, null, null, '2012-07-24 22:46:17', null);
+INSERT INTO `dwz_keywords` VALUES ('3', '002', '音乐', null, '1', null, '音乐', null, null, null, '2012-07-24 22:45:40', null);
+INSERT INTO `dwz_keywords` VALUES ('4', '003', '娱乐', null, '1', null, '娱乐', null, null, null, '2012-07-24 22:45:20', null);
+INSERT INTO `dwz_keywords` VALUES ('5', '004', '综艺', null, '1', null, '综艺', null, null, null, '2012-07-24 22:44:57', null);
+INSERT INTO `dwz_keywords` VALUES ('6', '005', '动漫', null, '1', null, '动漫', null, null, null, '2012-07-24 22:44:36', null);
+INSERT INTO `dwz_keywords` VALUES ('7', '006', '电视剧', null, '1', null, '电视剧', null, null, null, '2012-07-24 22:44:13', null);
+INSERT INTO `dwz_keywords` VALUES ('8', '007', '电影', null, '1', null, '电影', null, null, null, '2012-07-24 22:01:23', null);
+INSERT INTO `dwz_keywords` VALUES ('9', '0085', '汽车5', null, '1', '0', '汽车\n5', '0', '2012-07-24 22:56:52', '', '2012-07-24 23:51:10', '');
+INSERT INTO `dwz_keywords` VALUES ('11', '3333', 'dsfasdf', null, '1', '0', 'asdfasdfasdfasd', '0', '2012-07-24 23:51:30', '', '2012-07-24 23:51:30', '');
 
 -- ----------------------------
 -- Table structure for `dwz_log`
@@ -115,8 +117,8 @@ CREATE TABLE `dwz_log` (
 DROP TABLE IF EXISTS `dwz_user`;
 CREATE TABLE `dwz_user` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `code` varchar(15) DEFAULT NULL COMMENT '用户名',
-  `name` varchar(45) DEFAULT NULL COMMENT '姓名',
+  `name` varchar(15) DEFAULT NULL COMMENT '用户名',
+  `realname` varchar(45) DEFAULT NULL COMMENT '姓名',
   `password` varchar(45) DEFAULT NULL,
   `sex` int(11) DEFAULT NULL COMMENT '1-男\n2-女',
   `email` varchar(45) DEFAULT NULL,

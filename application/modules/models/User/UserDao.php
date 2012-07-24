@@ -1,5 +1,9 @@
 <?php
-
+/**
+ * 功能:数据库操作类,user
+ * 作者:luq <sesehai@gmail.com>
+ * 日期:2012-07-22
+ */
 class User_UserDao {
 
     /**
@@ -7,9 +11,9 @@ class User_UserDao {
      */
     protected static $_instance = null;
     // 设置默认表名
-	protected $_name = "letv_user";
+    protected $_name = "dwz_user";
     // 默认主键为’id’
-    protected $_primary = "user_id";
+    protected $_primary = "id";
 
     private function __construct() {
 
@@ -27,87 +31,72 @@ class User_UserDao {
     }
 
     public function get($id) {
-        $ds = new Ds($this->_name, $this->_primary);
-        $row = $ds->getRow($id);
-        $userInfo = new User_UserInfo($row);
-        return $userInfo;
+        $oDs = new Ds($this->_name, $this->_primary);
+        $row = $oDs->getRow($id);
+        $oUserInfo = new User_UserInfo($row);
+        return $oUserInfo;
     }
 
-    public function load(&$userInfo) {
-        $ds = new Ds($this->_name, $this->_primary);
-        $row = $ds->getRow($userInfo->getUserId());
-        $userInfo = new User_UserInfo($row);
+    public function load($oUserInfo) {
+        $oDs = new Ds($this->_name, $this->_primary);
+        $row = $oDs->getRow($oUserInfo->getId());
+        $oUserInfo = new User_UserInfo($row);
+        return $oUserInfo;
     }
 
-    public function add(&$userInfo) {
-    	$row['user_id'] = $userInfo->getUserId();
-        $row['user_name'] = $userInfo->getUserName();
-        $row['email'] = $userInfo->getEmail();
-//        $row['password'] = $userInfo->getPassword();
-//        $row['create_at'] = $userInfo->getCreateAt();
-        $row['is_administrator'] = $userInfo->getIsAdministrator();
-//        $row['status'] = $userInfo->getStatus();
-        $table = new User_UserTable();
-        $id = $table->insert($row);
-        $userInfo->setUserId($id);
+    public function add($oUserInfo) {
+        $row = $oUserInfo->getPropertys();
+        unset($row[$this->_primary]);
+        $oDs = new Ds($this->_name, $this->_primary);
+        $id = $oDs->insert($row);
+        $oUserInfo->setId($id);
+        return $oUserInfo;
     }
 
-    public function modify(&$userInfo) {
-        $row['user_name'] = $userInfo->getUserName();
-        $row['email'] = $userInfo->getEmail();
-//        $row['password'] = $userInfo->getPassword();
-//        $row['create_at'] = $userInfo->getCreateAt();
-        $row['is_administrator'] = $userInfo->getIsAdministrator();
-//        $row['status'] = $userInfo->getStatus();
+    public function modify($oUserInfo) {
+        $row = $oUserInfo->getPropertys();
 
-        $table = new User_UserTable();
-        $db = $table->getAdapter();
-        $where = $db->quoteInto(" user_id = ?", $userInfo->getUserId());
-        $table->update($row, $where);
+        $oDs = new Ds($this->_name, $this->_primary);
+        return $oDs->update($row);
     }
 
-    public function del($userInfo) {
-        $this->delById($userInfo->getUserId());
+    public function del($id) {
+        $oDs = new Ds($this->_name, $this->_primary);
+        return $oDs->delete($id);
     }
 
     public function delById($id) {
-//        $table = new User_UserTable();
-//        $db = $table->getAdapter();
-//        $where = $db->quoteInto('user_id=?', $id);
-//        $table->delete($where);
-		  $userInfo = $this->get($id);
-		  $userInfo->setStatus(0);
-		  $this->modify($userInfo);
+        $oUserInfo = $this->get($id);
+        $oUserInfo->setStatus(0);
+        return $this->modify($oUserInfo);
     }
 
     public function getList($perpage, $page) {
-        $ds = new Ds($this->_name, $this->_primary);
-        $list = $ds->getList(' status=1 ', $perpage, $page);
-        $userInfoArray = array();
+        $oDs = new Ds($this->_name, $this->_primary);
+        $list = $oDs->getList(' status=1 ', $perpage, $page);
+        $oUserInfoArray = array();
         foreach ($list as $row) {
-            $userInfo = new User_UserInfo($row);
-            array_push($userInfoArray, $userInfo);
+            $oUserInfo = new User_UserInfo($row);
+            array_push($oUserInfoArray, $oUserInfo);
         }
-        return $userInfoArray;
+        return $oUserInfoArray;
     }
 
     public function getArrayList($perpage = 0, $page = 0) {
-        $log = Zend_Registry::get('log');
+        //$log = Zend_Registry::get('log');
 
-        $ds = new Ds("letv_user", "user_id");
-        $list = $ds->getList(' 1=1 ', $perpage, $page);
-        $userInfoArray = array();
+        $oDs = new Ds($this->_name, $this->_primary);
+        $list = $oDs->getList(' 1=1 ', $perpage, $page);
+        $oUserInfoArray = array();
         foreach ($list as $row) {
-            //$userInfo = new User_UserInfo($row);
-            //$log->debug( "################### page:".(Zend_Json::encode($row)));
-            array_push($userInfoArray, $row);
+            array_push($oUserInfoArray, $row);
         }
-        return $userInfoArray;
+        return $oUserInfoArray;
     }
 
     public function getListAllCount() {
-        $ds = new Ds($this->_name, $this->_primary);
-        return $ds->getListCount(' status=1 ');
+        $oDs = new Ds($this->_name, $this->_primary);
+        return $oDs->getListCount(' status=1 ');
     }
 }
 

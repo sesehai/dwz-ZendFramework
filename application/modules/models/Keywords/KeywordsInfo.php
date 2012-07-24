@@ -22,7 +22,7 @@ class Keywords_KeywordsInfo {
     public function __construct($keywordsArray = null) {
         if ($keywordsArray != null) {
             $this->id=$keywordsArray['id'];//主键ID
-            $this->cod=$keywordsArray['cod'];;//编号
+            $this->code=$keywordsArray['code'];;//编号
             $this->name=$keywordsArray['name'];//名称
             $this->type=$keywordsArray['type'];//标签类型1:标签分类2:取值标签3:匹配标签
 
@@ -54,7 +54,8 @@ class Keywords_KeywordsInfo {
     }
 
     public function getPropertys(){
-        return $this->propertyToArray();
+        $this->propertyToArray();
+        return $this->propertys;
     }
 
     public function getId()
@@ -134,7 +135,7 @@ class Keywords_KeywordsInfo {
 
     public function getIsDelete()
     {
-        return $this->created_date;
+        return $this->is_delete;
     }
 
     public function setCreatedDate($created_date)
