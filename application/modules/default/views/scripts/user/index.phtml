@@ -7,12 +7,12 @@
     <div class="searchBar">
         <ul class="searchContent">
             <li>
-                <label>编号：</label>
-                <input type="text" name="code" value="<?php echo $_REQUEST['code']?>"/>
+                <label>名称：</label>
+                <input type="text" name="code" value="<?php echo $_REQUEST['name']?>"/>
             </li>
             <li>
-                <label>名称：</label>
-                <input type="text" name="name" value="<?php echo $_REQUEST['name']?>"/>
+                <label>真实名称：</label>
+                <input type="text" name="name" value="<?php echo $_REQUEST['realname']?>"/>
             </li>
         </ul>
         <div class="subBar">
@@ -36,17 +36,19 @@
     <table class="table" width="100%" layoutH="138">
         <thead>
         <tr>
-            <th width="100" orderField="code" <?php if ($_REQUEST['orderField'] == 'code') { echo 'class="'.$_REQUEST['orderDirection'].'"'; }?>>编号</th>
+            <th width="100" orderField="id" <?php if ($_REQUEST['orderField'] == 'id') { echo 'class="'.$_REQUEST['orderDirection'].'"'; }?>>编号</th>
             <th orderField="name" <?php if ($_REQUEST['orderField'] == 'name') { echo 'class="'.$_REQUEST['orderDirection'].'"'; }?>>名称</th>
-            <th>描述</th>
+            <th>真实姓名</th>
+            <th>E-mail</th>
         </tr>
         </thead>
         <tbody>
         <?php foreach($this->list as $vo){?>
             <tr target="sid_obj" rel="<?php echo $vo->getId();?>">
-                <td><?php echo $vo->getCode();?></td>
+                <td><?php echo $vo->getId();?></td>
                 <td><?php echo $vo->getName();?></td>
-                <td><?php echo $vo->getDescription();?></td>
+                <td><?php echo $vo->getRealname();?></td>
+                <td><?php echo $vo->getEmail();?></td>
             </tr>
         <?php }?>
         </tbody>
